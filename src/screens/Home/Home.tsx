@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { Screen } from '@components';
 
-const Header = () => {
+const Home = () => {
     return (
-        <View>
-            <Text>Header</Text>
-        </View>
+        <Screen>
+            <Text>Home</Text>
+        </Screen>
     );
 };
 
-export default Header;
+export default Home;
 
 const styles = StyleSheet.create({});
