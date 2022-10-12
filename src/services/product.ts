@@ -1,4 +1,5 @@
 import {get, post} from './request'
 
+export const addProduct = (data: object) => post("/products", data)
 export const getProducts = () => get("/products")
-export const getProductDetail = (id: string) => get(`/products/${id}`)
+export const getProductById = (id: string) => get(`/products/${id}`)

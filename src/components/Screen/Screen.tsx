@@ -11,13 +11,6 @@ interface Props {
 const Screen: React.FunctionComponent<Props> = (props) => {
   const {children, showBack, showHeader} = props;
 
-  useEffect(() => {
-    console.log("children: ", children);
-    console.log("showHeader: ", showHeader);
-    console.log("showBack: ", showBack);
-  }, [])
-  
-
   return (
     <SafeAreaProvider>
       <SafeAreaView>

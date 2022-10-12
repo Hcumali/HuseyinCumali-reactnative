@@ -4,7 +4,10 @@ type parameterTypes = {
     data?: object,
 }
 
-const root = "xx"
+const rootUrl = "https://upayments-studycase-api.herokuapp.com/api";
+
+// This token will be expire in five days from created ==> 14.10.2022 14:00
+const BearerToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjdW1hbGkxNkBnbWFpbC5jb20iLCJnaXRodWIiOiJodHRwczovL2dpdGh1Yi5jb20vSGN1bWFsaSIsImlhdCI6MTY2NTMxOTg2MSwiZXhwIjoxNjY1NzUxODYxfQ.IZe4QA9OG5-FDbetUjio4ZqL0UaZuZQ0bN-cIChZ-Ko";
 
 function request(parameter: parameterTypes) {
     const {url, method, data} = parameter;
@@ -13,17 +16,25 @@ function request(parameter: parameterTypes) {
         var options = null
 
         if (data && method === "POST") {
-            console.log("if");
+            console.log("POST Request");
             
             options = {
                 method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': BearerToken
+                },
                 body: JSON.stringify(data)
             }
         } else {
-            console.log("else");
+            console.log("GET Request");
 
             options = {
-                method
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': BearerToken
+                },
             }
         }
 
@@ -38,5 +49,5 @@ function request(parameter: parameterTypes) {
     });
 }
 
-export const get = (url: string) => request({url: root+url, method: "GET"})
-export const post = (url: string, data: object) => request({url: root+url, data, method: "POST"})
+export const get = (url: string) => request({url: rootUrl+url, method: "GET"})
+export const post = (url: string, data: object) => request({url: rootUrl+url, data, method: "POST"})
